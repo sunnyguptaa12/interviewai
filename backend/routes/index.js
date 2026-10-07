@@ -1,0 +1,24 @@
+import { Router } from 'express';
+import authRoutes from './authRoutes.js';
+import userRoutes from './userRoutes.js';
+import resumeRoutes from './resumeRoutes.js';
+import aiRoutes from './aiRoutes.js';
+import adminRoutes from './adminRoutes.js';
+import * as d from './dataRoutes.js';
+
+const router = Router();
+router.get('/health', (req, res) => res.json({ success: true, message: 'OK', data: {} }));
+router.use('/auth', authRoutes);
+router.use('/users', userRoutes);
+router.use('/resumes', resumeRoutes);
+router.use('/ai', aiRoutes);
+router.use('/questions', d.questionRoutes);
+router.use('/answers', d.answerRoutes);
+router.use('/interviews', d.interviewRoutes);
+router.use('/job-descriptions', d.jobRoutes);
+router.use('/learning-plans', d.planRoutes);
+router.use('/analytics', d.analyticsRoutes);
+router.use('/progress', d.progressRoutes);
+router.use('/notifications', d.notificationRoutes);
+router.use('/admin', adminRoutes);
+export default router;
